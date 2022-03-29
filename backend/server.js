@@ -1,31 +1,45 @@
 const http = require('http');
-const mongoclient = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017/mydb'
+const MongoClient = require('mongodb').MongoClient;
+var url = 'mongodb://localhost:27017/'
+const bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
 
-// mongoclient.connect(url,function(err,db){
-//     if(err){
-//         console.log(err)
-//     }else{
-//         console.log('Mongodb database connected')
-//     }
-// })
-
-var db = mongoclient.connect(url)
-
-const server = http.createServer((req,res) => {
+const requestHandler = (req,res) => {
     if(req.method === 'POST'){
-        console.log('Post request')
-        db.createCollection('students',function(err,data){
+        var data 
+        jsonParser(req,res,(err) => {
+        MongoClient.connect(url,function(err,db){
             if(err) throw err;
-            console.log('Collection created')
+            var dbo = db.db('mydb');
+             data = {
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
+                age: req.body.age,
+                gender: req.body.gender,
+                city: req.body.city,
+                email:req.body.email,
+            }
+            console.log(data)
+            dbo.collection('user').insertOne(data,
+            function(err,result){
+                if(err) throw err;
+                res.writeHead(200,"OK",{'Content-Type':'multipart/form-data'})
+                console.log(result)
+            }    
+            )
         })
-    }else{
-        console.log('get Method')
+     })
+     res.end('User data collected')
+    }  
+    else{
+        console.log('GET request')
+        
     }
-})
+}
 
-const port = 8000;
+const server =  http.createServer(requestHandler)
+
+const port = 7000;
 const host = 'localhost';
 server.listen(port,host)
 console.log(`Server is running at localhost:${port}`)
-

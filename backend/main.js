@@ -31,10 +31,9 @@ function requestHandler(req,res){
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
                 res.end(JSON.stringify(result));
-            })
-        
+            })   
         })     
-    }else if(req.method === 'POST'){
+    }else if(req.method === 'POST' && req.url === "/user"){
         
         mongoclient.connect(url,jsonParser,function(err,db){
             if(err) throw err;

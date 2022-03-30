@@ -32,21 +32,21 @@ http.createServer(function(req,res){
     //     })
     // })
     var form = new formidable.IncomingForm();
-    var data
+    let data
     var file
-    form.parse(req,function(err,fields,files){
-        console.log(files)
-        file=files
-    })
-    console.log(file)
+    // form.parse(req,function(err,fields,files){
+    //     console.log(files)
+    //     file=files
+    // })
+    // console.log(file)
     jsonParser(req,res,(err) => {
        data = {
-           first_name: req.body.first_name,
-           last_name: req.body.last_name,
-           age: req.body.age,
-           gender:req.body.gender,
-           city:req.body.city,
-           email:req.body.email,
+           first_name: req.fields.first_name,
+           last_name: req.fields.last_name,
+           age: req.fields.age,
+           gender:req.fields.gender,
+           city:req.fields.city,
+           email:req.fields.email,
        }
        console.log(data)
        MongoClient.connect(url,function(err,db){

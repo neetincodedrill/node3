@@ -1,6 +1,6 @@
 const http = require('http');
 const MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://localhost:27017/'
+var url = 'mongodb+srv://neetinnegi:neetinnegi@cluster0.tyxfy.mongodb.net/'
 const bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 
@@ -23,7 +23,7 @@ const requestHandler = (req,res) => {
             dbo.collection('user').insertOne(data,
             function(err,result){
                 if(err) throw err;
-                res.writeHead(200,"OK",{'Content-Type':'multipart/form-data'})
+                res.writeHead(200,"OK",{'Content-Type':'application/json'})
                 console.log(result)
             }    
             )
@@ -31,10 +31,6 @@ const requestHandler = (req,res) => {
      })
      res.end('User data collected')
     }  
-    else{
-        console.log('GET request')
-        
-    }
 }
 
 const server =  http.createServer(requestHandler)

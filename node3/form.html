@@ -145,30 +145,30 @@
                     for (var value of data.values()) {
                         console.log(value);
                     }
-                    const http = new XMLHttpRequest();
-                    var params = data;
-                    http.open("POST","http://localhost:8000/");
-                    http.setRequestHeader("Content-type","mulitpart/form-data")
+                    // const http = new XMLHttpRequest();
+                    // // var params = data;
+                    // http.open("POST","http://localhost:7000/");
+                    // http.setRequestHeader("Content-type","application/json")
 
-                    alert(http.onreadystatechange);
-                    http.onreadystatechange = function(){
-                        if(http.readyState == 4 && http.status == 200){
-                            console.log(http.responseText)
-                        }
-                    }
-                    http.send(params)
-                    // $.ajax({
-                    //     url:"http://localhost:8000/",
-                    //     data:data,
-                    //     cache:false,
-                    //     contentType:false,
-                    //     processData:false,
-                    //     method:"POST",
-                    //     type:'POST',
-                    //     success:function(data){
-                    //         alert(data);
+                    // alert(http.onreadystatechange);
+                    // http.onreadystatechange = function(){
+                    //     if(http.readyState == 4 && http.status == 200){
+                    //         console.log(http.responseText)
                     //     }
-                    // })
+                    // }
+                    // http.send(data)
+                    $.ajax({
+                        url:"http://localhost:7000/",
+                        data:data,
+                        cache:false,
+                        contentType:"application/json",
+                        processData:false,
+                        method:"POST",
+                        type:'POST',
+                        success:function(data){
+                            alert(data);
+                        }
+                    })
                 })
             })
         </script>

@@ -1,6 +1,6 @@
 const http = require('http');
 const MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb+srv://neetinnegi:neetinnegi@cluster0.tyxfy.mongodb.net/'
+var url = 'mongodb+srv://neetinnegi:neetinnegi@cluster0.tyxfy.mongodb.net/mydb?retryWrites=true&w=majority'
 const bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 

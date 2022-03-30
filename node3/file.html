@@ -11,7 +11,7 @@
 
 <body>
 
-    <form>
+    <form enctype="multipart/form-data">
         <input type="text" name="first_name" id="first_name" placeholder="first_name" required />
         <input type="text" name="last_name" id="last_name" placeholder="last_name" required />
         <input type="email" name="email" id="email" placeholder="email" required />
@@ -31,7 +31,7 @@
             <option value="Zirkpur">Zirkpur</option>
             <option value="Ambala">Ambala</option>
         </select>
-        <!-- <input id="file" type="file" name="file" required/></br> -->
+        <input id="file" type="file" name="file" required/></br>
         <button type="submit" id="submit" class="button">Submit</button>
     </form>
 
@@ -39,24 +39,31 @@
         $(document).ready(function () {
             $('form').submit(function (e) {
                 e.preventDefault();
-                var first_name = document.getElementById('first_name').value;
-                var last_name = document.getElementById('last_name').value;
-                var age = document.getElementById('age').value;
-                var gender = document.getElementById('gender').value;
-                var city = document.getElementById('city').value;
-                var email = document.getElementById('email').value
-
                 if (first_name != '' && last_name != '' && age != '' && gender != '' && city != '' && email != '') {
-                    var data = {
-                        first_name: first_name,
-                        last_name: last_name,
-                        age: age,
-                        gender: gender,
-                        city: city,
-                        email: email
-                    };
+                    var first_name = document.getElementById('first_name').value;
+                    var last_name = document.getElementById('last_name').value;
+                    var age = document.getElementById('age').value;
+                    var gender = document.getElementById('gender').value;
+                    var city = document.getElementById('city').value;
+                    var email = document.getElementById('email').value;
+                    var file = document.getElementById('file');
 
-                    var xhttp = new XMLHttpRequest();
+                    var formData = new FormData();
+                    formData.append('file',file.files[0])
+                    formData.append('first_name',first_name)
+                    formData.append('last_name',last_name)
+                    formData.append('age',age);
+                    formData.append('gender',gender);
+                    formData.append('city',city);
+                    formData.append('email',email);
+                    console.log(formData)
+                    var type = file.files[0].type
+                    // Display the values
+                    for (var value of formData.values()) {
+                        console.log(value);
+                    }
+                    if(type === 'image/png' || type === 'image/jpg'){
+                        var xhttp = new XMLHttpRequest();
                     //set post method 
                     xhttp.open('POST', "http://localhost:7000/", true);
 
@@ -67,9 +74,13 @@
                         }
                     };
                     //content-type
-                    xhttp.setRequestHeader('Content-Type', 'application/json');
+                    xhttp.setRequestHeader('Content-Type', 'multipart/form-data');
                     //send request with data
-                    xhttp.send(JSON.stringify(data))
+                    xhttp.send(formData)
+                    }  
+                    else{
+                        alert('file type is wrong')
+                    }           
                 }
             })
         })

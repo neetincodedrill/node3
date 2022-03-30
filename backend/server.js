@@ -18,12 +18,13 @@ const requestHandler = (req,res) => {
                 gender: req.body.gender,
                 city: req.body.city,
                 email:req.body.email,
+                file: req.file.path
             }
             console.log(data)
             dbo.collection('user').insertOne(data,
             function(err,result){
                 if(err) throw err;
-                res.writeHead(200,"OK",{'Content-Type':'application/json'})
+                res.writeHead(200,"OK",{'Content-Type':'multipart/form-data'})
                 console.log(result)
             }    
             )

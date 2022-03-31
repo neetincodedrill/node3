@@ -48,21 +48,32 @@
                     var email = document.getElementById('email').value;
                     var file = document.getElementById('file');
 
-                    var formData = new FormData();
-                    formData.append('file',file.files[0])
-                    formData.append('first_name',first_name)
-                    formData.append('last_name',last_name)
-                    formData.append('age',age);
-                    formData.append('gender',gender);
-                    formData.append('city',city);
-                    formData.append('email',email);
-                    console.log(formData)
+                    // var formData = new FormData();
+                    // formData.append('file',file.files[0])
+                    // formData.append('first_name',first_name)
+                    // formData.append('last_name',last_name)
+                    // formData.append('age',age);
+                    // formData.append('gender',gender);
+                    // formData.append('city',city);
+                    // formData.append('email',email);
+                    // console.log(formData)
                     var type = file.files[0].type
-                    // Display the values
-                    for (var value of formData.values()) {
-                        console.log(value);
-                    }
+                    // // Display the values
+                    // for (var value of formData.values()) {
+                    //     console.log(value);
+                    // }
+
                     if(type === 'image/png' || type === 'image/jpg'){
+                        var formData = {
+                            first_name :first_name,
+                            last_name: last_name,
+                            age: age,
+                            gender:gender,
+                            city:city,
+                            email :email,
+                            file:file
+                        }
+                        console.log(formData)
                         var xhttp = new XMLHttpRequest();
                     //set post method 
                     xhttp.open('POST', "http://localhost:7000/", true);
@@ -76,7 +87,7 @@
                     //content-type
                     xhttp.setRequestHeader('Content-Type', 'multipart/form-data');
                     //send request with data
-                    xhttp.send(formData)
+                    xhttp.send(JSON.stringify(formData))
                     }  
                     else{
                         alert('file type is wrong')

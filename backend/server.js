@@ -10,18 +10,17 @@ const requestHandler = (req,res) => {
 	res.setHeader('Access-Control-Request-Method', '*');
 	res.setHeader('Access-Control-Allow-Methods', 'POST');
 	res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.setHeader('Content-Type','multipart/form-data')
+    // res.setHeader('Content-Type','multipart/form-data')
     
-    if(req.method === 'POST'&& req.url === '/user'){
-        var data ;
-        let form=new formidable.IncomingForm();    
+    if(req.method === 'POST'){
+        // let form=new formidable.IncomingForm();    
         jsonParser(req,res,(err) => {
-        form.parse(req,function(err,fields,files){
+        // form.parse(req,function(err,fields,files){
         MongoClient.connect(url,function(err,db){
             if(err) throw err;
             var dbo = db.db('mydb');
-             data = {
-                image:files,
+            var  data = {
+                // image:files,
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 age: req.body.age,
@@ -44,14 +43,14 @@ const requestHandler = (req,res) => {
                }          
             })
         })
-        })
+        // })
     res.end('User data collected')
     }
 }
 
 const server =  http.createServer(requestHandler)
 
-const port = 3000;
+const port = 7000;
 const host = 'localhost';
 server.listen(port,host)
 console.log(`Server is running at localhost:${port}`)

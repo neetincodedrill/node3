@@ -39,7 +39,7 @@
         $(document).ready(function () {
             $('form').submit(function (e) {
                 e.preventDefault();
-                if (first_name != '' && last_name != '' && age != '' && gender != '' && city != '' && email != '') {
+               
                     var first_name = document.getElementById('first_name').value;
                     var last_name = document.getElementById('last_name').value;
                     var age = document.getElementById('age').value;
@@ -48,21 +48,7 @@
                     var email = document.getElementById('email').value;
                     var file = document.getElementById('file');
 
-                    // var formData = new FormData();
-                    // formData.append('file',file.files[0])
-                    // formData.append('first_name',first_name)
-                    // formData.append('last_name',last_name)
-                    // formData.append('age',age);
-                    // formData.append('gender',gender);
-                    // formData.append('city',city);
-                    // formData.append('email',email);
-                    // console.log(formData)
                     var type = file.files[0].type
-                    // // Display the values
-                    // for (var value of formData.values()) {
-                    //     console.log(value);
-                    // }
-
                     if(type === 'image/png' || type === 'image/jpg'){
                         var formData = {
                             first_name :first_name,
@@ -71,12 +57,26 @@
                             gender:gender,
                             city:city,
                             email :email,
-                            file:file
+                            image:file
                         }
+                        // var formData = new FormData();
+                        // formData.append('file',file.files[0])
+                        // formData.append('first_name',first_name)
+                        // formData.append('last_name',last_name)
+                        // formData.append('age',age);
+                        // formData.append('gender',gender);
+                        // formData.append('city',city);
+                        // formData.append('email',email);
+                        console.log(formData)
+                     // // Display the values
+                    // for (var value of formData.values()) {
+                    //     console.log(value);
+                    // }
+                   
                         console.log(formData)
                         var xhttp = new XMLHttpRequest();
                     //set post method 
-                    xhttp.open('POST', "http://localhost:7000/", true);
+                    xhttp.open('POST', "http://localhost:8000/", true);
 
                     //call on request change state
                     xhttp.onreadystatechange = function () {
@@ -92,7 +92,7 @@
                     else{
                         alert('file type is wrong')
                     }           
-                }
+                
             })
         })
     </script>

@@ -43,11 +43,28 @@ const requestHandler = (req,res) => {
       })      
     });
      }
+     else{
+       console.log('GET request');
+       var data = [];
+       MongoClient.connect(url,function(err,db){
+         if(err) throw err;
+         var dbo = db.db('mydb');
+         if(dbo){
+          return dbo.collection('user').find({}).toArray(function(err,result){
+            if(err) throw err;   
+            console.log(result)      
+             res.writeHead(200,{'Content-Type':'application/json'})
+          }) 
+         }    
+         res.end('Data uploaded') 
+       })
+      
+     }
 }
 
 const server =  http.createServer(requestHandler)
 
-const port = 8000;
+const port = 7000;
 const host = 'localhost';
 server.listen(port,host)
 console.log(`Server is running at localhost:${port}`)

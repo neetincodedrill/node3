@@ -11,7 +11,7 @@ nav{
     display:flex;
     flex-wrap:wrap;
     flex-direction:row;
-    justify-content: flex-start;
+    justify-content:space-between;
     align-items: center;
     color:white;;
     max-width:90%;
@@ -25,23 +25,47 @@ nav h3{
     font-family: 'Montserrat', sans-serif;
 }
 
+.logo{
+    display: flex;
+    flex-direction:row;
+    align-items:center
+}
+
+.left-nav ul a{
+    padding:9px 20px
+}
+
+.left-nav ul a:hover{
+    color:white;
+    border-radius:20px;
+}
+
+.left-nav i{
+    padding-left:8px;
+   
+}
+
 ul{
     display:flex;
     flex-direction: row;
 }
 
 ul li a{
-    margin-right:120px;
-    color:#595B63;
+    color:#acafb8;
     font-family: 'Roboto', sans-serif;
 }
 
-ul li a:hover{
-    color:white
+.navigation ul li a{
+    padding:9px 30px
+}
+
+.navigation ul li a:hover{
+    color:white;
+    border-radius:20px;
 }
 
 main{
-    margin-top:10%
+    margin-top:7%
 }
 
 .container{

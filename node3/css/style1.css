@@ -9,8 +9,9 @@ nav{
     display:flex;
     flex-wrap:wrap;
     flex-direction:row;
-    justify-content: flex-start;
+    justify-content:space-between;
     align-items: center;
+    color:white;;
     max-width:90%;
     margin:35px auto 0px auto;
     
@@ -20,7 +21,28 @@ nav h3{
     margin-right:120px;
     font-size:25px;
     font-family: 'Montserrat', sans-serif;
-    color:black
+}
+
+.logo{
+    display: flex;
+    flex-direction:row;
+    align-items:center
+}
+
+.logo h3{
+    color :black
+}
+
+.left-nav ul a{
+    padding:9px 20px
+}
+
+.left-nav ul a:hover{
+    color:black;
+}
+
+.left-nav i{
+    padding-left:8px;
 }
 
 ul{
@@ -29,13 +51,17 @@ ul{
 }
 
 ul li a{
-    margin-right:120px;
-    color:#676e72;
+    
+    color: #676e72;;
     font-family: 'Roboto', sans-serif;
 }
 
-ul li a:hover{
-    color:black
+.navigation ul li a{
+    padding:9px 30px;
+}
+
+.navigation ul li a:hover{
+    color:black;
 }
 
 main{

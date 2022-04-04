@@ -9,6 +9,7 @@
     display:flex;
     flex-direction:row;
     justify-content: space-between;
+   
 }
 
 .sidebar{
@@ -18,6 +19,8 @@
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
+    background-color: black;
+    color:white
 }
 
 .logo{
@@ -32,16 +35,27 @@
 }
 
 .info h4{
-    margin-top:10%
+    margin-top:15%
+}
+
+.info p{
+    color:rgb(153, 145, 145);
+    padding-top:5px
 }
 
 .sidebar ul li {
-    padding-bottom:30%
+    padding-bottom:30%;
+    padding-left:10px;
+    color:rgb(153, 145, 145)
+}
+
+i{
+    margin-right:10px
 }
 
 .sidebar ul li a{
-    color:black;
-    padding-left:10px
+    margin-left:10px;
+    color:rgb(153, 145, 145)
 }
 
 .siderbar ul li a:hover{
@@ -60,13 +74,93 @@
 }
 
 .down{
-    margin-bottom:10%
+    margin-bottom:10%;
+    margin-right:20px
 }
 
 .dashboard{
-    flex:5;
+    flex:6;
     height:100vh;
-    background-color:grey;
-    overflow:auto;
 }
+
+.dashboard .top-bar{
+    max-width:90%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:2%
+
+}
+
+.input{
+    border:1px solid grey;
+    max-width:50%;
+    padding:10px 0px 10px 10px;
+    border-radius:10px
+}
+
+.input i{
+    padding-left:10px
+}
+
+.input input{
+    outline:none;
+    border:none;
+    font-size:13px;
+    font-weight:bold
+}
+
+.main-section{
+    max-width:90%;
+    margin-left: auto;
+    margin-right:auto;
+    border:1px solid black;
+    margin-top:20px;
+    border-radius:20px
+}
+
+.user-info{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center; 
+    margin-left: auto;
+    margin-right:auto;
+    padding-left:20px;
+    padding-right:20px
+}
+
+.user-info .left{
+    padding:20px 0px 20px 5px;
+
+}
+
+
+.user-info .right{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    border:1px solid black;
+    padding:5px 0px 5px 5px;
+    border-radius:20px
+}
+
+.user-info .right span{
+    border:1px solid grey;
+    border-radius:20px;
+    padding:4px 5px 3px 15px;
+    font-size:13px;
+    text-align:center;
+    margin-right:10px
+}
+
+.right p{
+    font-size:13px;
+    padding-right:10px
+}
+
+.line{
+    border:1px solid black
+}
+
+
 
